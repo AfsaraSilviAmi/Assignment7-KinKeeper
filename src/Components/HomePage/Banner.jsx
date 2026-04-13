@@ -35,7 +35,7 @@ relationships that matter most.</p>
                {
                 loading? (<div className="flex justify-center">
     <span className="loading loading-dots loading-xl text-accent text-4xl"></span>
-  </div>) : ( <div className='grid grid-cols-4'>
+  </div>) : ( <div className='grid md:grid-cols-4'>
                 {
                     friends.map(friend =><FriendCard key={friend.id} friend ={friend}></FriendCard>)
                 }
