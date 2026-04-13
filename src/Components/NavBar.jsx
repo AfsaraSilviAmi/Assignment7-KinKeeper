@@ -7,7 +7,7 @@ import { BsGraphUp } from 'react-icons/bs';
 
 const NavBar = () => {
     return (
-        <div className='bg-base-100 shadow-sm'>
+        <div className='bg-base-100 shadow-sm sticky top-0 z-10'>
             <div className="navbar w-11/12 mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
