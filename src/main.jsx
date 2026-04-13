@@ -6,9 +6,10 @@ import LayOut from './MainLayout/LayOut'
 import HomePage from './Components/HomePage/HomePage'
 
 const router = createBrowserRouter([
-  {
+  {id:"root",
     path: '/',
     element:<LayOut></LayOut>,
+    loader:()=> fetch("/friends.json").then((res)=>res.json()),
     children:[
       {
         index: true,
