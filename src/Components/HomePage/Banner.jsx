@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import FriendCard from './FriendCard';
 
-const Banner = ({friends}) => {
+const Banner = ({friends, loading}) => {
     return (
         <div>
             <div className='text-center mt-15 space-y-3.5'>
@@ -13,7 +13,7 @@ relationships that matter most.</p>
             </div>
             <div className='grid sm:grid-cols-2 md:grid-cols-4 text-center'>
                 <div className='shadow-md w-50 mx-auto py-5'>
-                    <h1 className='font-semibold text-[32px]'>{friends.length}</h1>
+                    <h1 className='font-semibold text-[32px]'>10</h1>
                     <p className='text-[18px] text-[#64748B]'>Total Friends</p>
                 </div>
                 <div className='shadow-md w-50 mx-auto py-5'>
@@ -32,11 +32,15 @@ relationships that matter most.</p>
 
             <div className='mt-8'>
                 <h1 className='font-semibold text-[24px]'>Your Friends</h1>
-                <div className='grid grid-cols-4'>
+               {
+                loading? (<div className="flex justify-center">
+    <span className="loading loading-dots loading-xl text-accent text-4xl"></span>
+  </div>) : ( <div className='grid grid-cols-4'>
                 {
                     friends.map(friend =><FriendCard key={friend.id} friend ={friend}></FriendCard>)
                 }
-            </div>
+            </div>)
+               }
             </div>
         </div> 
     );

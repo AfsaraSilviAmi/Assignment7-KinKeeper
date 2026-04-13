@@ -4,16 +4,19 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import LayOut from './MainLayout/LayOut'
 import HomePage from './Components/HomePage/HomePage'
+import FriendDetails from './Components/HomePage/FriendDetails'
 
 const router = createBrowserRouter([
-  {id:"root",
+  {
     path: '/',
     element:<LayOut></LayOut>,
-    loader:()=> fetch("/friends.json").then((res)=>res.json()),
+    
     children:[
       {
         index: true,
-        element:<HomePage></HomePage>
+        element:<HomePage></HomePage>,
+        
+        
 
       },
       {
@@ -23,6 +26,13 @@ const router = createBrowserRouter([
       {
         path:"/stats",
         element:<div>stats</div>
+      },
+      {
+        path:"/friendDetails/:id",
+        element:<FriendDetails></FriendDetails>,
+        loader: () => fetch("/friends.json").then((res)=>res.json())
+
+
       }
     ]
   }
