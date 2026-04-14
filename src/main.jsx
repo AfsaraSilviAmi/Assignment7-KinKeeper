@@ -8,6 +8,7 @@ import FriendDetails from './Components/HomePage/FriendDetails'
 import TimeLine from './Components/Timeline/TimeLine'
 import TimelineProvider from './Components/Timeline/TimelineContext'
 import ErrorPage from './Components/Error/ErrorPage'
+import AnalyticsPage from './Components/Stats/AnalyticsPage'
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/stats",
-        element:<div>stats</div>
+        element:<AnalyticsPage></AnalyticsPage>
       },
       {
         path:"/friendDetails/:id",
