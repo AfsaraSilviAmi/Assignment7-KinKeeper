@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import LayOut from './MainLayout/LayOut'
 import HomePage from './Components/HomePage/HomePage'
 import FriendDetails from './Components/HomePage/FriendDetails'
+import TimeLine from './Components/Timeline/TimeLine'
+import TimelineProvider from './Components/Timeline/TimelineContext'
 
 const router = createBrowserRouter([
   {
@@ -21,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/timeline',
-        element:<div>timeline</div>
+        element:<TimeLine></TimeLine>
       },
       {
         path:"/stats",
@@ -40,6 +42,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router = {router}></RouterProvider>
+    <TimelineProvider>
+      <RouterProvider router = {router}></RouterProvider>
+    </TimelineProvider>
   </StrictMode>,
 )
