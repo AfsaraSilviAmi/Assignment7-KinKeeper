@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { TimelineContext } from './TimelineContext';
 import callImg from '../../assets/call.png'
 import textImg from "../../assets/text.png"
@@ -40,6 +40,13 @@ const TimeLine = () => {
         }
 
     }
+
+    const [filter, setFilter] = useState(null);
+
+    const handleFilter = (type) =>{
+        setFilter(type);
+    }
+    const filterActivity = (filter ? activity.filter((item)=> item.type === filter): activity)
     return (
         <div>
             <div className='w-11/12 mx-auto'>
@@ -47,14 +54,14 @@ const TimeLine = () => {
                 <div className="dropdown dropdown-center">
   <div tabIndex={0} role="button" className="m-1 bg-base-300 py-2 px-6 text-[#64748B] rounded-md text-[18px] flex items-center gap-4">Filter timeline  <FaAngleDown></FaAngleDown></div>
   <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-    <li><a>Call</a></li>
-    <li><a>Text</a></li>
-    <li><a>Video</a></li>
+    <li onClick={()=>handleFilter("call")}><a>Call</a></li>
+    <li onClick={()=>handleFilter("text")}><a>Text</a></li>
+    <li onClick={()=>handleFilter("video")}><a>Video</a></li>
   </ul>
 </div>
                 <div>
                     {
-                    activity.length === 0?(<div><p>No activity yet</p></div>): (activity.map((item, index)=>{return(
+                    filterActivity.length === 0?(<div><p>No activity yet</p></div>): (filterActivity.map((item, index)=>{return(
                         <div key={index} className='shadow-sm p-4 my-3'>
                             <div className='flex gap-2'>
                                <img src={getImage(item.type)} alt="" className='h-10 ' />
