@@ -5,6 +5,7 @@ import { MdOutlineTextsms } from 'react-icons/md';
 import { RiDeleteBin6Line, RiNotificationSnoozeLine } from 'react-icons/ri';
 import { useLoaderData, useParams } from 'react-router';
 import { TimelineContext } from '../Timeline/TimelineContext';
+import { toast } from 'react-toastify';
 
 
 
@@ -89,9 +90,9 @@ const FriendDetails = () => {
             <div className='shadow-sm mt-6 p-6'>
                 <h1 className='text-[#244D3F] text-[20px]'>Quick Check-in</h1>
                 <div className='md:flex gap-4 mt-4'>
-                    <button onClick={()=> addActivity({type: "call", friendName: friend.name, time: new Date().toDateString()})} className='btn flex flex-col items-center justify-center gap-2 w-60 h-25'><FiPhoneCall className='text-2xl' />Call</button>
-                    <button onClick={()=> addActivity({type: "text", friendName: friend.name, time: new Date().toDateString()})} className='btn flex flex-col items-center justify-center gap-2 w-60 h-25'><MdOutlineTextsms className='text-2xl' />Text</button>
-                    <button onClick={()=> addActivity({type: "video", friendName: friend.name, time: new Date().toDateString()})} className='btn flex flex-col items-center justify-center gap-2 w-60 h-25'><GoDeviceCameraVideo className='text-2xl' />Video</button>
+                    <button onClick={()=> {addActivity({type: "call", friendName: friend.name, time: new Date().toDateString()}); toast.success(`You Called ${friend.name}`)}} className='btn flex flex-col items-center justify-center gap-2 w-60 h-25'><FiPhoneCall className='text-2xl' />Call</button>
+                    <button onClick={()=> {addActivity({type: "text", friendName: friend.name, time: new Date().toDateString()}); toast.success(`You Texted ${friend.name}`)}} className='btn flex flex-col items-center justify-center gap-2 w-60 h-25'><MdOutlineTextsms className='text-2xl' />Text</button>
+                    <button onClick={()=> {addActivity({type: "video", friendName: friend.name, time: new Date().toDateString()}); toast.success(`You Called ${friend.name}`)}} className='btn flex flex-col items-center justify-center gap-2 w-60 h-25'><GoDeviceCameraVideo className='text-2xl' />Video</button>
                 </div>
             </div>
            </div>

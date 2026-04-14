@@ -7,6 +7,7 @@ import HomePage from './Components/HomePage/HomePage'
 import FriendDetails from './Components/HomePage/FriendDetails'
 import TimeLine from './Components/Timeline/TimeLine'
 import TimelineProvider from './Components/Timeline/TimelineContext'
+import ErrorPage from './Components/Error/ErrorPage'
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,8 @@ const router = createBrowserRouter([
 
 
       }
-    ]
+    ],
+    errorElement:<ErrorPage></ErrorPage>
   }
 ])
 

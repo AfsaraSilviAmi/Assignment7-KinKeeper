@@ -61,7 +61,7 @@ const TimeLine = () => {
 </div>
                 <div>
                     {
-                    filterActivity.length === 0?(<div><p>No activity yet</p></div>): (filterActivity.map((item, index)=>{return(
+                    filterActivity.length === 0?(<div className='flex justify-center items-center h-[40vh]'><p className='font-bold text-2xl'>No activity yet</p></div>): (filterActivity.map((item, index)=>{return(
                         <div key={index} className='shadow-sm p-4 my-3'>
                             <div className='flex gap-2'>
                                <img src={getImage(item.type)} alt="" className='h-10 ' />
