@@ -11,7 +11,7 @@ const Banner = ({friends, loading}) => {
 relationships that matter most.</p>
 <button className='btn bg-green-950 text-white mb-8'><FaPlus></FaPlus>Add a Friend</button>
             </div>
-            <div className='grid sm:grid-cols-2 md:grid-cols-4 text-center'>
+            <div className='grid lg:grid-cols-4 text-center'>
                 <div className='shadow-md w-60 mx-auto py-5'>
                     <h1 className='font-semibold text-[32px]'>10</h1>
                     <p className='text-[18px] text-[#64748B]'>Total Friends</p>
@@ -31,7 +31,7 @@ relationships that matter most.</p>
             </div>
 
             <div className='mt-8'>
-                <h1 className='font-semibold text-[24px]'>Your Friends</h1>
+                <h1 className='font-semibold text-[24px] mb-4'>Your Friends</h1>
                {
                 loading? (<div className="flex justify-center">
     <span className="loading loading-dots loading-xl text-accent text-4xl"></span>

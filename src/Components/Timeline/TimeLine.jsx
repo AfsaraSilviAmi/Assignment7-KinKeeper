@@ -42,26 +42,63 @@ const TimeLine = () => {
     }
 
     const [filter, setFilter] = useState(null);
+    const [search, setSearch] = useState("");
+    const [sorted, setSorted] = useState(null);
 
     const handleFilter = (type) =>{
         setFilter(type);
     }
     const filterActivity = (filter ? activity.filter((item)=> item.type === filter): activity)
+
+    const searchActivity = filterActivity.filter((item)=>{
+        return (
+            item.friendName.toLowerCase().includes(search.toLocaleLowerCase()) || item.type.toLowerCase().includes(search.toLowerCase())
+        )
+    })
+    let sortedActivity = [...searchActivity];
+
+    if(sorted === "newest"){
+        sortedActivity.sort((a,b)=> b.timestamp - a.timestamp)
+    }
+    else if(sorted === "oldest"){
+        sortedActivity.sort((a,b)=> a.timestamp - b.timestamp)
+    }
     return (
         <div>
             <div className='w-11/12 mx-auto'>
                 <h1 className='text-[48px] font-bold mt-5'>Timeline</h1>
-                <div className="dropdown dropdown-center">
+                <div className='flex justify-between'>
+                    <div className="dropdown dropdown-center">
   <div tabIndex={0} role="button" className="m-1 bg-base-300 py-2 px-6 text-[#64748B] rounded-md text-[18px] flex items-center gap-4">Filter timeline  <FaAngleDown></FaAngleDown></div>
   <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
     <li onClick={()=>handleFilter("call")}><a>Call</a></li>
     <li onClick={()=>handleFilter("text")}><a>Text</a></li>
     <li onClick={()=>handleFilter("video")}><a>Video</a></li>
+    <li onClick={()=>setSorted("newest")}><a>Newest</a></li>
+    <li onClick={()=>setSorted("oldest")}><a>Oldest</a></li>
   </ul>
 </div>
+<div>
+    <label className="input">
+  <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g
+      strokeLinejoin="round"
+      strokeLinecap="round"
+      strokeWidth="2.5"
+      fill="none"
+      stroke="currentColor"
+    >
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.3-4.3"></path>
+    </g>
+  </svg>
+  <input type="search" required placeholder="Search by name or inte..." value={search} onChange={(e)=> setSearch(e.target.value)}/>
+</label>
+</div>
+                </div>
                 <div>
                     {
-                    filterActivity.length === 0?(<div className='flex justify-center items-center h-[40vh]'><p className='font-bold text-2xl'>No activity yet</p></div>): (filterActivity.map((item, index)=>{return(
+                    sortedActivity.length === 0?(<div className='flex justify-center items-center h-[40vh]'><p className='font-bold text-2xl'>No activity yet</p></div>): (sortedActivity.map((item, index)=>{return(
                         <div key={index} className='shadow-sm p-4 my-3'>
                             <div className='flex gap-2'>
                                <img src={getImage(item.type)} alt="" className='h-10 ' />
