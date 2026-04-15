@@ -20,10 +20,10 @@ KeenKeeper is a personal relationship management web app that helps users mainta
 ## ✨ Key Features
 
 ### 1. 👥 Friend Management (Home)
-View detailed friend profiles, track contact frequency, and perform quick actions like call, text, or video.
+View detailed friend profiles on click, track contact frequency, and perform quick actions like call, text, or video.
 
 ### 2. 🕒 Timeline Tracking (Timeline)
-Keep a history of all your interactions with friends, including type and date.
+Keep a history of all the interactions with friends, including type and date. Timelaine can be sorted by interactions and newest or oldest. Searching for a specific friend or the type of interaction is possible in this timeline page.
 
 ### 3.  📊 Friendship Analytics (Stats)
 Visualize your interactions (Calls, Texts, Videos) using a dynamic pie chart for better insights.
