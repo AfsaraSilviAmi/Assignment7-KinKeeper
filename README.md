@@ -28,3 +28,9 @@ Keep a history of all the interactions with friends, including type and date. Ti
 ### 3.  📊 Friendship Analytics (Stats)
 Visualize your interactions (Calls, Texts, Videos) using a dynamic pie chart for better insights.
 
+---
+
+## 🌐 Live Link
+
+https://keen-keeper-by-ami.netlify.app/
+
